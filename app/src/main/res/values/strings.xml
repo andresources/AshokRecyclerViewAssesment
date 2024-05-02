@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AshokAssesment</string>
+    <string name="mango">Mango</string>
+    <string name="kiwi">Kiwi</string>
 </resources>

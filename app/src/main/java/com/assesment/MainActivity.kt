@@ -1,12 +1,19 @@
 package com.assesment
 
+import abhishek.pathak.recyclerviewdemos.decorators.CustomBackgroundItemDecorator
+import abhishek.pathak.recyclerviewdemos.decorators.FirstNLastItemDecorator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.assesment.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -56,6 +63,79 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }).attachToRecyclerView(rv)
+            btnLinear.setOnClickListener {
+                rv.layoutManager = LinearLayoutManager(this@MainActivity)
+                rv.adapter = mailAdapter
+            }
+            btnGrid.setOnClickListener {
+                rv.layoutManager = GridLayoutManager(this@MainActivity,2)
+                rv.adapter = mailAdapter
+            }
+            btnStaggered.setOnClickListener {
+                rv.layoutManager = StaggeredGridLayoutManager(2,0)
+                rv.adapter = mailAdapter
+            }
+            btnHorizontal.setOnClickListener {
+                rv.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                rv.adapter = mailAdapter
+            }
+            btnDecorator2.setOnClickListener {
+                val spaceItemDecoration = FirstNLastItemDecorator(
+                    resources.getDimensionPixelSize(R.dimen._50dp),
+                    resources.getDimensionPixelSize(R.dimen._10dp)
+                )
+                rv.layoutManager =
+                    LinearLayoutManager(this@MainActivity)
+                rv.addItemDecoration(spaceItemDecoration)
+                rv.adapter = mailAdapter
+            }
+
+            btnDecorator3.setOnClickListener {
+                val uiDecorator = CustomBackgroundItemDecorator(
+                    ContextCompat.getDrawable(this@MainActivity, R.drawable.progress)!!,
+                    resources.getDimensionPixelSize(R.dimen._50dp),
+                    resources.getDimensionPixelSize(R.dimen._50dp)
+                )
+                rv.layoutManager =
+                    LinearLayoutManager(this@MainActivity)
+                rv.addItemDecoration(uiDecorator)
+                rv.adapter = mailAdapter
+            }
+
+            btnDecorator3.setOnClickListener {
+                val uiDecorator = CustomBackgroundItemDecorator(
+                    ContextCompat.getDrawable(this@MainActivity, R.drawable.progress)!!,
+                    resources.getDimensionPixelSize(R.dimen._50dp),
+                    resources.getDimensionPixelSize(R.dimen._50dp)
+                )
+                rv.layoutManager =
+                    LinearLayoutManager(this@MainActivity)
+                rv.addItemDecoration(uiDecorator)
+                rv.adapter = mailAdapter
+            }
+
+            btnDecorator3.setOnClickListener {
+                val uiDecorator = CustomBackgroundItemDecorator(
+                    ContextCompat.getDrawable(this@MainActivity, R.drawable.progress)!!,
+                    resources.getDimensionPixelSize(R.dimen._50dp),
+                    resources.getDimensionPixelSize(R.dimen._50dp)
+                )
+                rv.layoutManager =
+                    LinearLayoutManager(this@MainActivity)
+                rv.addItemDecoration(uiDecorator)
+                rv.adapter = mailAdapter
+            }
+
+            btnAnim.setOnClickListener {
+
+                rv.layoutManager =
+                    LinearLayoutManager(this@MainActivity)
+                val animation: LayoutAnimationController =
+                    AnimationUtils.loadLayoutAnimation(this@MainActivity, R.anim.layout_animation)
+                rv.layoutAnimation = animation
+                rv.adapter = mailAdapter
+            }
+
         }
     }
     fun prepareDataSet(){

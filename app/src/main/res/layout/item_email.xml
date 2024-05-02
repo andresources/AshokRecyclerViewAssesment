@@ -74,6 +74,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtBody" />
+        <Button
+            android:id="@+id/btnPopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:maxLines="1"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtBody" />
         <ToggleButton
             android:id="@+id/tb"
             android:textOn=" "

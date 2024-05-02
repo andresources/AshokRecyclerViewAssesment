@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.assesment.databinding.ItemEmailBinding
@@ -23,6 +24,26 @@ class MailAdapter(private val mails: List<MailDetails>) :
                 }else{
                     imgUser.setImageResource(R.drawable.andimg)
                 }
+                btnPopup.setOnClickListener {
+                    val popUpMenu = PopupMenu(
+                        btnPopup.context,
+                        btnPopup
+                    )
+                    popUpMenu.menuInflater.inflate(
+                        R.menu.pop_up_menu,
+                        popUpMenu.menu
+                    )
+                    popUpMenu.setOnMenuItemClickListener {
+                        when (it.itemId) {
+                            R.id.mango -> Toast.makeText(btnPopup.context,"Mango",Toast.LENGTH_SHORT).show()
+                            R.id.kiwi -> Toast.makeText(btnPopup.context,"Kiwi",Toast.LENGTH_SHORT).show()
+                        }
+                        true
+                    }
+
+                        popUpMenu.show()
+
+                }
             }
         }
     }
@@ -38,11 +59,13 @@ class MailAdapter(private val mails: List<MailDetails>) :
     override fun onBindViewHolder(holder: MailViewHolder, position: Int) {
         val data = mails[position]
         holder.bindData(mails[position],position)
-        holder.itemView.setOnClickListener{
+        /*holder.itemView.setOnClickListener{
             val context = holder.itemView.context
             val intent = Intent(context,MailDetailsActivity::class.java)
             intent.putExtra("Data",data)
             context.startActivity(intent)
-        }
+        }*/
     }
+
+
 }
